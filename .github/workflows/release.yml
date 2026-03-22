@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
@@ -48,7 +51,3 @@ jobs:
           tags: ${{ env.CUE_VERSION }},latest
           tag_with_ref: false
           tag_with_sha: false
-          target: cue
-          always_pull: true
-          build_args: GOLANG_VERSION=${{ env.GOLANG_VERSION }},CUE_VERSION=v${{ env.CUE_VERSION }}
-          add_git_labels: true
